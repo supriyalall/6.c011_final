@@ -8,14 +8,15 @@ from decomposition_study.types import CodingTask
 def load_humaneval_tasks() -> list[CodingTask]:
     """Load HumanEval problems (164 function-level tasks with prompts and entry points)."""
     try:
-        from human_eval.data import HUMAN_EVAL  # type: ignore[import-untyped]
+        from human_eval.data import read_problems  # type: ignore[import-untyped]
     except ImportError as e:
         raise ImportError(
             "Install optional dependency: pip install human-eval"
         ) from e
 
+    problems = read_problems()
     tasks: list[CodingTask] = []
-    for row in HUMAN_EVAL:
+    for row in problems.values():
         tasks.append(
             CodingTask(
                 task_id=str(row["task_id"]),

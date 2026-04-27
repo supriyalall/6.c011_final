@@ -4,6 +4,7 @@ import ast
 import math
 import re
 from dataclasses import dataclass
+from statistics import mean, pstdev
 
 from decomposition_study.types import CodingTask
 
@@ -94,6 +95,13 @@ FEATURE_NAMES_STRUCTURAL_ONLY: tuple[str, ...] = (
     "independence_lexical",
 )
 
+FEATURE_GROUPS: dict[str, tuple[str, ...]] = {
+    "task_description": ("statement_len_log", "compositionality_steps", "independence_lexical"),
+    "code_size": ("code_len_log", "ast_nodes_log", "num_functions"),
+    "graph_structure": ("cyclomatic_approx", "coupling_imports", "coupling_calls"),
+    "all": FEATURE_NAMES_FULL,
+}
+
 
 def _ast_stats(code: str) -> tuple[int, int, int]:
     if not code.strip():
@@ -109,7 +117,7 @@ def _ast_stats(code: str) -> tuple[int, int, int]:
         1
         for n in ast.walk(tree)
         if isinstance(
-            n, (ast.If, ast.For, ast.While, ast.Try, ast.BoolOp, ast.Comprehension)
+            n, (ast.If, ast.For, ast.While, ast.Try, ast.BoolOp, ast.comprehension)
         )
     )
     return nodes, funcs, max(1, branches)
@@ -183,3 +191,45 @@ def build_design_matrix(
     include_diff = not structural_only
     X = [features_to_vector(r, include_difficulty=include_diff) for r in rows]
     return X, names
+
+
+def build_design_matrix_normalized_by_dataset(
+    rows: list[TaskFeatureRow], structural_only: bool
+) -> tuple[list[list[float]], list[str]]:
+    by_dataset: dict[str, list[TaskFeatureRow]] = {}
+    for r in rows:
+        by_dataset.setdefault(r.dataset, []).append(r)
+    vec_map: dict[str, list[float]] = {}
+    for ds_rows in by_dataset.values():
+        raw = [features_to_vector(r, include_difficulty=not structural_only) for r in ds_rows]
+        if not raw:
+            continue
+        n_features = len(raw[0])
+        cols = [[v[i] for v in raw] for i in range(n_features)]
+        means = [mean(c) for c in cols]
+        stds = [pstdev(c) for c in cols]
+        for row, vec in zip(ds_rows, raw):
+            out = []
+            for i, val in enumerate(vec):
+                sd = stds[i]
+                out.append(0.0 if sd == 0.0 else (val - means[i]) / sd)
+            vec_map[row.task_id] = out
+    names = (
+        list(FEATURE_NAMES_STRUCTURAL_ONLY)
+        if structural_only
+        else list(FEATURE_NAMES_FULL)
+    )
+    return [vec_map[r.task_id] for r in rows], names
+
+
+def select_feature_subset(
+    X: list[list[float]], feature_names: list[str], subset: str
+) -> tuple[list[list[float]], list[str]]:
+    if subset not in FEATURE_GROUPS:
+        raise ValueError(f"Unknown feature subset: {subset}")
+    allowed = set(FEATURE_GROUPS[subset])
+    idxs = [i for i, name in enumerate(feature_names) if name in allowed]
+    if not idxs:
+        raise ValueError(f"No features selected for subset: {subset}")
+    out = [[row[i] for i in idxs] for row in X]
+    return out, [feature_names[i] for i in idxs]

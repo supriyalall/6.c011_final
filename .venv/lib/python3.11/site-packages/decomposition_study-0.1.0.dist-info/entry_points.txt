@@ -1,0 +1,2 @@
+[console_scripts]
+run-decomposition-study = decomposition_study.cli:main

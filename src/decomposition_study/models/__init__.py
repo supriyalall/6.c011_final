@@ -1,3 +1,9 @@
-from decomposition_study.models.predictor import TrainReport, fit_and_evaluate
+from decomposition_study.models.predictor import (
+    ModelType,
+    TrainReport,
+    fit_and_evaluate,
+    fit_model,
+    predict_proba,
+)
 
-__all__ = ["fit_and_evaluate", "TrainReport"]
+__all__ = ["ModelType", "TrainReport", "fit_and_evaluate", "fit_model", "predict_proba"]
