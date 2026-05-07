@@ -1,0 +1,27 @@
+[
+  {
+    "task_id": "BigCodeBench/13",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "BigCodeBench/15",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "BigCodeBench/17",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "BigCodeBench/19",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "BigCodeBench/34",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  }
+]

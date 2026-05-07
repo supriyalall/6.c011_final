@@ -1,0 +1,42 @@
+[
+  {
+    "task_id": "HumanEval/0",
+    "pass": true
+  },
+  {
+    "task_id": "HumanEval/1",
+    "pass": true
+  },
+  {
+    "task_id": "HumanEval/2",
+    "pass": true
+  },
+  {
+    "task_id": "HumanEval/3",
+    "pass": true
+  },
+  {
+    "task_id": "HumanEval/4",
+    "pass": true
+  },
+  {
+    "task_id": "HumanEval/5",
+    "pass": true
+  },
+  {
+    "task_id": "HumanEval/6",
+    "pass": true
+  },
+  {
+    "task_id": "HumanEval/7",
+    "pass": true
+  },
+  {
+    "task_id": "HumanEval/8",
+    "pass": true
+  },
+  {
+    "task_id": "HumanEval/9",
+    "pass": true
+  }
+]

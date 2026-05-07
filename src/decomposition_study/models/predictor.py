@@ -48,6 +48,7 @@ def fit_and_evaluate(
     if X_arr.ndim != 2:
         raise ValueError("X must be 2D")
     clf, resolved_name = _make_model(model_type, random_state)
+    _apply_class_reweighting(clf, resolved_name, y_arr)
     if len(np.unique(y_arr)) < 2:
         clf.fit(X_arr, y_arr)
         return (
@@ -107,8 +108,20 @@ def fit_model(
     random_state: int = 0,
 ) -> tuple[object, str]:
     model, resolved_name = _make_model(model_type, random_state)
-    model.fit(np.asarray(X, dtype=float), np.asarray(y, dtype=int))
+    y_arr = np.asarray(y, dtype=int)
+    _apply_class_reweighting(model, resolved_name, y_arr)
+    model.fit(np.asarray(X, dtype=float), y_arr)
     return model, resolved_name
+
+
+def _apply_class_reweighting(model: object, model_name: str, y: np.ndarray) -> None:
+    """Use XGBoost's positive-class weighting for imbalanced labels."""
+    if model_name != "xgboost":
+        return
+    n_pos = int(np.sum(y == 1))
+    n_neg = int(np.sum(y == 0))
+    if n_pos > 0 and hasattr(model, "set_params"):
+        model.set_params(scale_pos_weight=n_neg / n_pos)
 
 
 def _make_logistic_pipeline(random_state: int) -> Pipeline:

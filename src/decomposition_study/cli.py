@@ -12,6 +12,7 @@ from decomposition_study.analysis.routing import (
 )
 from decomposition_study.analysis.stratified import evaluate_by_difficulty_bins
 from decomposition_study.config import DEFAULT_CONFIG
+from decomposition_study.data.bigcodebench_loader import load_bigcodebench_hard_tasks
 from decomposition_study.data.humaneval_loader import load_humaneval_tasks
 from decomposition_study.data.results_schema import load_results_json, results_to_map
 from decomposition_study.data.swe_bench_loader import load_swe_bench_lite
@@ -31,7 +32,7 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument(
         "--datasets",
         nargs="+",
-        choices=("humaneval", "swe_bench_lite"),
+        choices=("humaneval", "swe_bench_lite", "bigcodebench"),
         default=["humaneval"],
     )
     p.add_argument("--results-path", type=Path)
@@ -278,6 +279,8 @@ def _load_tasks(datasets: list[str], swebench_max_rows: int) -> list:
             out.extend(load_humaneval_tasks())
         elif ds == "swe_bench_lite":
             out.extend(load_swe_bench_lite(max_rows=swebench_max_rows))
+        elif ds == "bigcodebench":
+            out.extend(load_bigcodebench_hard_tasks())
         else:
             raise ValueError(ds)
     return out

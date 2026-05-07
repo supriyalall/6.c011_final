@@ -1,0 +1,440 @@
+================================================================================
+DECOMPOSITION STUDY — COMPILED FINDINGS
+HumanEval (164 tasks) + BigCodeBench-Hard (148 tasks) = 312 tasks
+Model: gpt-4o-mini, temperature 0
+================================================================================
+
+
+SECTION 1. EXPERIMENTAL SETUP
+--------------------------------------------------------------------------------
+
+Two benchmarks run end-to-end through an LLM harness in three conditions:
+
+  baseline        Model called once with the original benchmark prompt.
+  plan_then_code  One LLM call with a "PLAN: ... CODE: ..." appendix.
+                  Operationalizes single-prompt CoT-style decomposition.
+  spec_then_code  Two-pass decomposition.
+                    Pass 1: extract structured REQUIREMENTS / EXAMPLES /
+                            EDGE_CASES from the docstring (no code).
+                    Pass 2: receive original prompt + extracted spec,
+                            write the implementation.
+
+Scoring:
+  HumanEval  human_eval.execution.check_correctness, in-process exec,
+             10s per-test timeout.
+  BCB-Hard   subprocess unittest runner, 120s per-task timeout.
+             Some BCB tests hit real network / require missing optional
+             libraries (cv2, librosa, tensorflow); those tasks fail equally
+             in all conditions and therefore don't bias the comparison.
+
+
+SECTION 2. PER-DATASET PASS RATES
+--------------------------------------------------------------------------------
+
+| dataset    |  n  | baseline | plan_then_code   | spec_then_code   |
+|------------|----:|---------:|-----------------:|-----------------:|
+| HumanEval  | 164 |   86.0%  |  89.0% (+3.05pp) |  86.6% (+0.61pp) |
+| BCB-Hard   | 148 |   25.7%  |  25.0% (-0.68pp) |  22.3% (-3.38pp) |
+
+Discordant pairs (which tasks each strategy helps vs hurts vs baseline):
+
+| dataset   | strategy        | both_pass | base_only | decomp_only | neither |
+|-----------|-----------------|----------:|----------:|------------:|--------:|
+| HumanEval | plan_then_code  |    136    |     5     |     10      |   13    |
+| HumanEval | spec_then_code  |    135    |     6     |      7      |   16    |
+| BCB-Hard  | plan_then_code  |     29    |     9     |      8      |  102    |
+| BCB-Hard  | spec_then_code  |     24    |    14     |      9      |  101    |
+
+Spec-then-code is the worst of the three on both datasets. On BCB-Hard it
+actively breaks 14 tasks the baseline could solve while only fixing 9 — the
+two-pass extraction adds noise (mis-extracted edge cases, fragmented context,
+drift from the original imports) that exceeds the planning benefit on long-
+docstring BCB tasks.
+
+Neither decomposition strategy helps on hard tasks. Decomposition's benefit
+on saturated easy benchmarks does not translate to genuinely hard problems
+where the model struggles for capability reasons.
+
+
+SECTION 3. ROUTING POLICY (5-fold CV, threshold 0.5, on combined dataset)
+--------------------------------------------------------------------------------
+
+Decomposed condition = plan_then_code:
+
+| Method   | Policy                  | Success | Decomp rate | Cost  |
+|----------|-------------------------|--------:|------------:|------:|
+| -        | always-baseline         |  57.4%  |       0%    |  1.00 |
+| -        | always-plan_then_code   |  58.7%  |     100%    |  2.00 |
+| XGBoost  | classifier-routed       |  61.5%  |     4.2%    |  1.04 |
+| MLP      | classifier-routed       |  60.9%  |     3.5%    |  1.04 |
+
+Decomposed condition = spec_then_code:
+
+| Method   | Policy                  | Success | Decomp rate | Cost  |
+|----------|-------------------------|--------:|------------:|------:|
+| -        | always-baseline         |  57.4%  |       0%    |  1.00 |
+| -        | always-spec_then_code   |  56.1%  |     100%    |  2.00 |
+| XGBoost  | classifier-routed       |  60.6%  |     3.2%    |  1.03 |
+| MLP      | classifier-routed       |  60.6%  |     3.5%    |  1.04 |
+
+Routing matches/beats both fixed policies in both regimes — but mostly by
+being conservative (decomposes only ~3-4% of tasks). With spec_then_code,
+always-decomposition is *worse* than always-baseline (56.1% vs 57.4%), so
+the routing win is more clearly a "learn to almost never fire decomposition"
+outcome than evidence that decomposability was correctly identified.
+
+
+SECTION 4. CROSS-DATASET GENERALIZATION
+--------------------------------------------------------------------------------
+
+Trained on one benchmark, evaluated on the other.
+
+plan_then_code:
+
+| Train -> Test            | Method  | Routed | Always-baseline | Always-decomp | Decomp rate |
+|--------------------------|---------|-------:|----------------:|--------------:|------------:|
+| BCB-Hard -> HumanEval    | XGBoost |  86.0% |          86.0%  |        89.0%  |       1.2%  |
+| HumanEval -> BCB-Hard    | XGBoost |  25.7% |          25.7%  |        25.0%  |       4.7%  |
+| BCB-Hard -> HumanEval    | MLP     |  86.0% |          86.0%  |        89.0%  |       1.2%  |
+| HumanEval -> BCB-Hard    | MLP     |  26.4% |          25.7%  |        25.0%  |       2.7%  |
+
+spec_then_code:
+
+| Train -> Test            | Method  | Routed | Always-baseline | Always-decomp | Decomp rate |
+|--------------------------|---------|-------:|----------------:|--------------:|------------:|
+| BCB-Hard -> HumanEval    | XGBoost |  86.0% |          86.0%  |        86.6%  |       0.0%  |
+| HumanEval -> BCB-Hard    | XGBoost |  26.4% |          25.7%  |        22.3%  |       6.1%  |
+| BCB-Hard -> HumanEval    | MLP     |  86.0% |          86.0%  |        86.6%  |       0.0%  |
+| HumanEval -> BCB-Hard    | MLP     |  25.7% |          25.7%  |        22.3%  |       3.4%  |
+
+Cross-dataset transfer is essentially zero in both decomposition regimes.
+Routers, both directions, collapse to within-noise of always-baseline on the
+unseen dataset. The classifier signal does not generalize across benchmarks.
+
+
+SECTION 5. CONFOUND CHECK (combined, normalized by dataset)
+--------------------------------------------------------------------------------
+
+plan_then_code:
+
+| Feature set                                  | XGB AUROC | XGB AUPRC | MLP AUROC | MLP AUPRC |
+|----------------------------------------------|----------:|----------:|----------:|----------:|
+| full                                         |    0.584  |    0.084  |    0.421  |    0.049  |
+| structural-only (no difficulty/size proxies) |    0.316  |    0.041  |    0.403  |    0.051  |
+
+spec_then_code:
+
+| Feature set                                  | XGB AUROC | XGB AUPRC | MLP AUROC | MLP AUPRC |
+|----------------------------------------------|----------:|----------:|----------:|----------:|
+| full                                         |    0.472  |    0.050  |    0.602  |    0.072  |
+| structural-only (no difficulty/size proxies) |    0.540  |    0.055  |    0.504  |    0.059  |
+
+For plan_then_code, structural-only features are substantially below chance
+(0.316 AUROC). The classifier's predictive signal on plan_then_code lives
+entirely in difficulty/size proxies — i.e., it's largely a "this is HumanEval
+not BCB" detector. For spec_then_code, the pattern flips: structural-only
+XGBoost AUROC (0.540) is slightly higher than full features (0.472), and
+code-size features are no longer dominant. Spec_then_code's helps/hurts
+pattern is decoupled from raw task size — consistent with spec extraction
+adding noise correlated with docstring complexity rather than with task
+difficulty.
+
+All AUROC values remain near chance, so neither result is strong evidence;
+but the qualitative shift is real, and shows that the choice of decomposition
+strategy changes which features (if any) carry signal.
+
+
+SECTION 6. FEATURE SUBSET ABLATION (combined, XGBoost)
+--------------------------------------------------------------------------------
+
+plan_then_code:
+
+| Subset             | AUROC | AUPRC |
+|--------------------|------:|------:|
+| task_description   | 0.472 | 0.056 |
+| code_size          | 0.664 | 0.163 |   <- best, but largely a dataset-id feature
+| graph_structure    | 0.396 | 0.058 |
+| all                | 0.584 | 0.084 |
+
+spec_then_code:
+
+| Subset             | AUROC | AUPRC |
+|--------------------|------:|------:|
+| task_description   | 0.390 | 0.041 |
+| code_size          | 0.463 | 0.048 |
+| graph_structure    | 0.525 | 0.061 |   <- best, weakly above chance
+| all                | 0.472 | 0.050 |
+
+For plan_then_code, code-size dominates — and on this corpus, code-size is
+largely a dataset-identity feature (BCB tasks systematically larger),
+explaining the cross-dataset transfer collapse. For spec_then_code, graph-
+structure becomes the best subset (0.525, slightly above chance). This is
+the only configuration in the study where the methodology's structural-
+decomposability hypothesis comes near being supported, though signal is
+still weak.
+
+
+SECTION 7. DIFFICULTY-STRATIFIED EVAL (combined, XGBoost)
+--------------------------------------------------------------------------------
+
+plan_then_code:
+
+| Bin    |  n  | n_positive | AUROC | AUPRC |
+|--------|----:|-----------:|------:|------:|
+| low    | 104 |      7     | 0.659 | 0.155 |
+| medium | 104 |      5     | 0.597 | 0.077 |
+| high   | 104 |      6     | 0.639 | 0.142 |
+
+spec_then_code:
+
+| Bin    |  n  | n_positive | AUROC | AUPRC |
+|--------|----:|-----------:|------:|------:|
+| low    | 104 |      4     | 0.628 | 0.058 |
+| medium | 104 |      7     | 0.464 | 0.072 |
+| high   | 104 |      5     | 0.268 | 0.037 |   <- substantially anti-predictive
+
+Plan_then_code's per-bin AUROC is roughly flat. Spec_then_code's high-
+difficulty bin has AUROC 0.27 — anti-predictive. Whatever signal the
+classifier finds for spec_then_code points the wrong direction on hard
+tasks: the model decomposes the tasks where it shouldn't.
+
+
+SECTION 8. CLASSIFICATION QUALITY (combined, full features)
+--------------------------------------------------------------------------------
+
+| Decomposition  | Method  | AUROC | AUPRC | F1    | Acc   | n_pos / n_total |
+|----------------|---------|------:|------:|------:|------:|-----------------|
+| plan_then_code | XGBoost | 0.584 | 0.084 | 0.067 | 0.910 |   18 / 312      |
+| plan_then_code | MLP     | 0.421 | 0.049 | 0.000 | 0.929 |   18 / 312      |
+| spec_then_code | XGBoost | 0.472 | 0.050 | 0.000 | 0.917 |   16 / 312      |
+| spec_then_code | MLP     | 0.602 | 0.072 | 0.000 | 0.926 |   16 / 312      |
+
+All four near chance. F1 is 0 in three of four because the 0.5 threshold
+never fires positive at ~5-6% prevalence — accuracy alone is just predicting
+all-negative. With ~18 positives total none of these AUROCs are
+statistically distinguishable from each other.
+
+
+SECTION 9. WHAT TYPES OF TASKS DOES PLAN-THEN-CODE HELP WITH?
+--------------------------------------------------------------------------------
+
+Quantitative (mean of each feature, by outcome group):
+
+| feature                 | ptc_helps | ptc_hurts | both_pass | both_fail | Cohen_d |
+|-------------------------|----------:|----------:|----------:|----------:|--------:|
+| statement_len_log       |    6.244  |    6.541  |    5.890  |    6.484  |  +0.13  |
+| code_len_log            |    6.656  |    6.854  |    6.161  |    6.963  |  +0.21  |
+| ast_nodes_log           |    2.679  |    2.530  |    2.400  |    2.837  |  +0.18  |
+| num_functions           |    1.056  |    1.000  |    1.018  |    1.017  |  +0.24  |
+| cyclomatic_approx       |    1.000  |    1.000  |    1.006  |    1.000  |  -0.06  |
+| coupling_imports        |    1.778  |    2.286  |    0.788  |    3.139  |  -0.00  |
+| coupling_calls          |    0.167  |    0.000  |    0.109  |    0.104  |  +0.10  |
+| compositionality_steps  |    0.444  |    0.357  |    0.376  |    0.313  |  +0.13  |
+| independence_lexical    |    0.278  |    0.571  |    0.248  |    0.313  |  -0.02  |
+
+Every Cohen's d is small (|d| <= 0.24). None of the existing structural
+features meaningfully separate the 18 ptc-helps tasks from the rest.
+
+Qualitative — looking at the 18 actual ptc-helps tasks reveals a coherent
+pattern that the structural features above don't capture:
+
+  Multi-step problems with explicit edge-case handling or composite outputs.
+
+HumanEval ptc-helps examples:
+
+  HumanEval/65   Circular shift digits, edge case "if shift > num digits,
+                 reverse instead".
+  HumanEval/102  Biggest even integer in [x,y], edge case "return -1 if no
+                 such number".
+  HumanEval/116  Sort by binary 1-count, tiebreak by decimal value
+                 (two-key sort).
+  HumanEval/129  Minimum path of length k in NxN grid (graph search with
+                 explicit length constraint).
+  HumanEval/154  Any rotation of word2 is substring of word1 (compound:
+                 rotate * substring-check).
+  HumanEval/159  Hungry rabbit: composite return [eaten, remaining_needed]
+                 with edge case "not enough carrots -> eat what's available".
+  HumanEval/89   Caesar cipher with explicit "shift = 2 * 2" formula the
+                 model often miscomputes one-shot.
+  HumanEval/32   Polynomial evaluation + find_zero (two-helper composition).
+  HumanEval/76   Simple-power check (recursive integer math + edge cases).
+  HumanEval/101  Split string by commas OR spaces (two-delimiter handling).
+
+BCB-Hard ptc-helps examples:
+
+  BCB/461  Subprocess + psutil orchestration (start -> monitor -> report)
+           — multi-step pipeline.
+  BCB/618  DataFrame with computed column where Penalty Cost must be
+           converted to fine via lookup.
+  BCB/765  Per-file pre-flight (exists? -> has-content? -> copy)
+           — branching pipeline.
+  BCB/870  Column-wise means ignoring missing/non-numeric values
+           — explicit edge case.
+  BCB/917  ARIMA forecast AND plot — composite return Tuple[List[float], Axes].
+  BCB/368  Move random file from dir A to B — multi-step pipeline.
+  BCB/401  Flask-Mail setup with env-var defaults — explicit fallback rules.
+  BCB/760  Build DataFrame with 100 records via random selection from given
+           lists — composite construction.
+
+Unifying theme:
+
+  Tasks where the docstring contains an enumerable list of conditions or a
+  composite output spec, and where forgetting any one of them flips a pass
+  to a fail. Plan-then-code surfaces those clauses explicitly during the
+  planning phase, so the model is more likely to address all of them.
+
+Implication for the methodology: the existing structural features are
+mostly code-level (AST coupling, call counts, function count). The signal
+that actually predicts plan-then-code benefit is docstring-level — number
+of edge-case clauses, number of return components, presence of branching
+specifications, presence of multi-step pipeline descriptions. These are
+docstring features, not code features, and they are not currently measured.
+
+
+SECTION 10. HEADLINE CONCLUSIONS
+--------------------------------------------------------------------------------
+
+  1. Both decomposition strategies fail on hard tasks. Plan-then-code is
+     neutral on BCB-Hard (-0.68 pp); spec-then-code is actively negative
+     (-3.38 pp). Decomposition helps where the model already nearly always
+     succeeds (HumanEval) and hurts or doesn't help where the model genuinely
+     struggles. The intuition that decomposition should help more on harder
+     problems is contradicted by both decomposition strategies tested.
+
+  2. More elaborate decomposition is not better. Spec-then-code (two-pass
+     with separate planner) is worse than plan-then-code (one-pass CoT) on
+     both datasets. Adding structure to the prompting pipeline does not
+     monotonically improve outcomes — the additional pass introduces failure
+     modes (mis-extracted edge cases, fragmented context) that outweigh the
+     planning benefit, especially on long-docstring BCB tasks.
+
+  3. Cross-dataset transfer is zero in both decomposition regimes.
+     Classifiers trained on one benchmark do not produce useful routing
+     decisions on the other.
+
+  4. Predictive signal shifts with decomposition definition. For
+     plan_then_code, code-size features dominate (and code-size is largely
+     a dataset-identity feature on this corpus, explaining the transfer
+     collapse). For spec_then_code, code-size is no longer predictive;
+     graph-structure becomes the best subset (AUROC 0.525) — the only
+     configuration where the methodology's structural-decomposability
+     hypothesis is mildly supported.
+
+  5. Classifier-routed policy still beats fixed policies in both regimes,
+     but as a cost-control mechanism (decomposes only 3-4% of tasks). With
+     spec_then_code, always-decomposition is worse than always-baseline,
+     so the routing win is even more clearly a "learn to almost never fire
+     it" outcome rather than evidence that decomposability was correctly
+     identified.
+
+  6. The methodology's central feature hypothesis is largely unsupported by
+     this evidence. Existing structural features (coupling / compositionality
+     / independence) are non-predictive (sub-chance AUROC on structural-only
+     for plan_then_code; only weakly above chance for spec_then_code).
+
+  7. Plan-then-code benefit IS qualitatively predictable, but from features
+     not currently measured. The 18 helps-tasks share a docstring-level
+     pattern: explicit edge-case clauses, composite returns, multi-step
+     pipelines. None of these are captured by code-level structural features.
+
+
+SECTION 11. SUGGESTED NEXT STEPS
+--------------------------------------------------------------------------------
+
+To salvage or further test the methodology's hypothesis on this evidence:
+
+  - Add docstring-level features the existing extractors miss:
+      * n_return_components: count of items in `Returns:` block
+                             (1 vs Tuple[...]).
+      * n_edge_case_clauses: count of "if / when / unless / otherwise"
+                             clauses in the docstring.
+      * n_imperative_steps:  count of imperative verbs in the docstring
+                             ("compute then return", "check then copy").
+      * n_examples:          count of `>>>` or `Example:` blocks.
+
+    The qualitative analysis in Section 9 strongly suggests these are where
+    the predictive signal lives.
+
+  - Try a stronger decomposition tactic (e.g., self-debug / iterative
+    refinement) that addresses BCB-Hard's actual failure mode (model
+    produces almost-right code that breaks on edge cases / library misuse).
+    Plan-then-code and spec-then-code both attack the planning failure mode,
+    which is not BCB-Hard's bottleneck.
+
+  - Increase positive-class size by either: running on a larger benchmark,
+    or sampling each task multiple times and labeling decomposition-helps
+    by majority vote — current n_positives = 18 across 312 tasks is the
+    binding constraint on confidence in every per-bin / per-subset number.
+
+
+SECTION 12. FILE INDEX
+--------------------------------------------------------------------------------
+
+results/
+  SUMMARY.md
+                                Markdown version of this findings document.
+  findings.txt
+                                THIS FILE.
+  plan_then_code_winners_analysis.md
+                                Output of analyze_plan_then_code_winners.py:
+                                feature means by outcome group, and full
+                                statement text for the 18 ptc-helps tasks.
+  combined_paired_results.json
+                                Merged paired results (baseline vs
+                                plan_then_code), both datasets.
+  combined_paired_baseline_vs_spec_then_code.json
+                                Merged paired results (baseline vs
+                                spec_then_code), both datasets.
+  combined_study_output.txt
+                                Full run_study.py output for plan_then_code,
+                                both datasets, with cross-dataset eval.
+  combined_study_output_spec_then_code.txt
+                                Full run_study.py output for spec_then_code,
+                                both datasets.
+
+results/humaneval/
+  baseline_passes.json
+  plan_then_code_passes.json
+  spec_then_code_passes.json
+                                Per-task pass flags, all three conditions.
+  baseline_detail.json
+  plan_then_code_detail.json
+  spec_then_code_detail.json
+                                Full LLM responses + extracted code (and
+                                pass1_response for spec_then_code).
+  paired_baseline_vs_plan_then_code.json
+  paired_baseline_vs_spec_then_code.json
+  paired_results.json
+                                Paired pass flags by condition pair.
+                                paired_results.json is a legacy alias for
+                                paired_baseline_vs_plan_then_code.json.
+  study_output.txt
+  study_output_rf_fallback.txt
+                                run_study.py output for HumanEval-only runs.
+
+results/bigcodebench_hard/
+  baseline_passes.json
+  plan_then_code_passes.json
+  spec_then_code_passes.json
+                                Per-task pass flags.
+  baseline_detail.json
+  plan_then_code_detail.json
+  spec_then_code_detail.json
+                                Full responses + Pass-1 spec where applicable.
+  paired_baseline_vs_plan_then_code.json
+  paired_baseline_vs_spec_then_code.json
+  paired_results.json
+                                Paired pass flags by condition pair.
+
+scripts/
+  run_humaneval_harness.py      LLM + scoring harness, HumanEval.
+  run_bigcodebench_harness.py   LLM + scoring harness, BCB-Hard.
+  run_study.py                  Wraps decomposition_study.cli.main.
+  compare_pass_rates.py         Quick paired-pass-rate table.
+  export_prompt_ablation.py     Export baseline + augmented prompts to JSON.
+  analyze_plan_then_code_winners.py
+                                Characterize the 18 ptc-helps tasks.
+
+================================================================================
+END OF FINDINGS
+================================================================================

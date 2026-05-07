@@ -1,0 +1,3 @@
+| dataset_group | n_tasks | baseline_pass | plan_then_code_pass | delta | both | baseline_only | ptc_only | neither |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| swe_bench_lite | 148 | 0.2568 | 0.2500 | -0.0068 | 29 | 9 | 8 | 102 |

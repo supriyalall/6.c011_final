@@ -1,0 +1,22 @@
+[
+  {
+    "task_id": "BigCodeBench/13",
+    "pass": false
+  },
+  {
+    "task_id": "BigCodeBench/15",
+    "pass": false
+  },
+  {
+    "task_id": "BigCodeBench/17",
+    "pass": false
+  },
+  {
+    "task_id": "BigCodeBench/19",
+    "pass": true
+  },
+  {
+    "task_id": "BigCodeBench/34",
+    "pass": true
+  }
+]

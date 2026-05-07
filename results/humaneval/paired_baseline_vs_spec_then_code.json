@@ -1,0 +1,822 @@
+[
+  {
+    "task_id": "HumanEval/0",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/1",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/10",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/100",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/101",
+    "monolithic_pass": false,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/102",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/103",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/104",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/105",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/106",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/107",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/108",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/109",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/11",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/110",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/111",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/112",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/113",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/114",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/115",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/116",
+    "monolithic_pass": false,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/117",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/118",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/119",
+    "monolithic_pass": true,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/12",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/120",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/121",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/122",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/123",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/124",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/125",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/126",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/127",
+    "monolithic_pass": true,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/128",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/129",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/13",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/130",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/131",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/132",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/133",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/134",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/135",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/136",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/137",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/138",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/139",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/14",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/140",
+    "monolithic_pass": true,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/141",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/142",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/143",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/144",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/145",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/146",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/147",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/148",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/149",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/15",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/150",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/151",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/152",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/153",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/154",
+    "monolithic_pass": false,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/155",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/156",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/157",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/158",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/159",
+    "monolithic_pass": false,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/16",
+    "monolithic_pass": true,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/160",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/161",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/162",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/163",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/17",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/18",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/19",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/2",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/20",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/21",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/22",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/23",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/24",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/25",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/26",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/27",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/28",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/29",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/3",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/30",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/31",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/32",
+    "monolithic_pass": false,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/33",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/34",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/35",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/36",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/37",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/38",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/39",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/4",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/40",
+    "monolithic_pass": true,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/41",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/42",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/43",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/44",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/45",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/46",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/47",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/48",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/49",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/5",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/50",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/51",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/52",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/53",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/54",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/55",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/56",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/57",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/58",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/59",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/6",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/60",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/61",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/62",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/63",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/64",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/65",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/66",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/67",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/68",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/69",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/7",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/70",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/71",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/72",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/73",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/74",
+    "monolithic_pass": false,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/75",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/76",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/77",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/78",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/79",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/8",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/80",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/81",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/82",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/83",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/84",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/85",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/86",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/87",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/88",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/89",
+    "monolithic_pass": false,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/9",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/90",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/91",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/92",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/93",
+    "monolithic_pass": false,
+    "decomposed_pass": false
+  },
+  {
+    "task_id": "HumanEval/94",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/95",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/96",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/97",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/98",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/99",
+    "monolithic_pass": true,
+    "decomposed_pass": false
+  }
+]

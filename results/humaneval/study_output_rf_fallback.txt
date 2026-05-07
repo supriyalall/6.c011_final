@@ -1,0 +1,97 @@
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/model_selection/_split.py:813: UserWarning: The least populated class in y has only 2 members, which is less than n_splits=5.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/model_selection/_split.py:813: UserWarning: The least populated class in y has only 3 members, which is less than n_splits=5.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/model_selection/_split.py:813: UserWarning: The least populated class in y has only 2 members, which is less than n_splits=5.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/model_selection/_split.py:813: UserWarning: The least populated class in y has only 3 members, which is less than n_splits=5.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/admin/Documents/6.c011_final/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (600) reached and the optimization hasn't converged yet.
+  warnings.warn(
+tasks_total: 164
+tasks_aligned: 164
+datasets: humaneval
+positive_labels: 10
+negative_labels: 154
+normalize_by_dataset: False
+
+## Baseline vs decomposition (success rate = mean pass flag per task)
+| dataset | n_tasks | baseline_success | decomposition_success | decomp - baseline |
+|---|---:|---:|---:|---:|
+| humaneval | 164 | 0.8598 | 0.8902 | +0.0305 |
+
+method: xgboost
+classification_full: {'model_name': 'xgboost_fallback_random_forest_cv', 'auc': 0.524025974025974, 'avg_precision': 0.11028857965292894, 'f1': 0.0, 'accuracy': 0.926829268292683, 'mean_importance': {'statement_len_log': 0.31160772327498987, 'code_len_log': 0.36182669213605395, 'ast_nodes_log': 0.18622945034475852, 'num_functions': 0.011503152630353577, 'cyclomatic_approx': 0.0005443363181478014, 'coupling_imports': 0.02592085016972297, 'coupling_calls': 0.025240890953432148, 'compositionality_steps': 0.05349005279216721, 'independence_lexical': 0.023636851380373844}}
+routing_policy: {'always_baseline_success': 0.8597560975609756, 'always_decomposition_success': 0.8902439024390244, 'classifier_routed_success': 0.9207317073170732, 'classifier_decomposition_rate': 0.07317073170731707, 'estimated_cost_always_baseline': 1.0, 'estimated_cost_always_decomposition': 2.0, 'estimated_cost_classifier_routed': 1.0731707317073171}
+confounds_full: {'model_name': 'xgboost_fallback_random_forest_cv', 'auc': 0.524025974025974, 'avg_precision': 0.11028857965292894, 'f1': 0.0, 'accuracy': 0.926829268292683, 'mean_importance': {'statement_len_log': 0.31160772327498987, 'code_len_log': 0.36182669213605395, 'ast_nodes_log': 0.18622945034475852, 'num_functions': 0.011503152630353577, 'cyclomatic_approx': 0.0005443363181478014, 'coupling_imports': 0.02592085016972297, 'coupling_calls': 0.025240890953432148, 'compositionality_steps': 0.05349005279216721, 'independence_lexical': 0.023636851380373844}}
+confounds_structural_only: {'model_name': 'xgboost_fallback_random_forest_cv', 'auc': 0.3555194805194805, 'avg_precision': 0.0481013463258429, 'f1': 0.0, 'accuracy': 0.7865853658536586, 'mean_importance': {'coupling_imports': 0.25302510129796923, 'coupling_calls': 0.18851386125919167, 'compositionality_steps': 0.3892429843120717, 'independence_lexical': 0.16921805313076746}}
+difficulty_bin: {'bin_name': 'low', 'n_tasks': 55, 'n_positive': 2, 'report': {'model_name': 'xgboost_fallback_random_forest_cv', 'auc': 0.9150943396226416, 'avg_precision': 0.5909090909090909, 'f1': 0.0, 'accuracy': 0.9636363636363636, 'mean_importance': {'statement_len_log': 0.3522323635859023, 'code_len_log': 0.2899428183007518, 'ast_nodes_log': 0.21966932497774877, 'num_functions': 0.0018279489400695066, 'cyclomatic_approx': 0.0, 'coupling_imports': 0.0020478241791415997, 'coupling_calls': 0.0, 'compositionality_steps': 0.12992784566352406, 'independence_lexical': 0.004351874352861855}}}
+difficulty_bin: {'bin_name': 'medium', 'n_tasks': 54, 'n_positive': 5, 'report': {'model_name': 'xgboost_fallback_random_forest_cv', 'auc': 0.7020408163265306, 'avg_precision': 0.2113675213675214, 'f1': 0.0, 'accuracy': 0.8888888888888888, 'mean_importance': {'statement_len_log': 0.369804016177643, 'code_len_log': 0.361586834978411, 'ast_nodes_log': 0.1697903091695197, 'num_functions': 0.0005012137158040427, 'cyclomatic_approx': 0.0, 'coupling_imports': 0.004066275719171544, 'coupling_calls': 0.0005448236240896655, 'compositionality_steps': 0.0472401648120923, 'independence_lexical': 0.04646636180326869}}}
+difficulty_bin: {'bin_name': 'high', 'n_tasks': 55, 'n_positive': 3, 'report': {'model_name': 'xgboost_fallback_random_forest_cv', 'auc': 0.5801282051282051, 'avg_precision': 0.09159451659451659, 'f1': 0.0, 'accuracy': 0.9454545454545454, 'mean_importance': {'statement_len_log': 0.2567763582189931, 'code_len_log': 0.3266590131937001, 'ast_nodes_log': 0.1650781018619219, 'num_functions': 0.044487304993904776, 'cyclomatic_approx': 0.0015217719330429388, 'coupling_imports': 0.05459806876830584, 'coupling_calls': 0.07737382320379974, 'compositionality_steps': 0.05093128310326848, 'independence_lexical': 0.022574274723063045}}}
+feature_subset_task_description: {'model_name': 'xgboost_fallback_random_forest_cv', 'auc': 0.39707792207792214, 'avg_precision': 0.05396321651619386, 'f1': 0.0, 'accuracy': 0.8963414634146342, 'mean_importance': {'statement_len_log': 0.835633530163123, 'compositionality_steps': 0.11186282451208875, 'independence_lexical': 0.052503645324788246}}
+feature_subset_code_size: {'model_name': 'xgboost_fallback_random_forest_cv', 'auc': 0.6441558441558441, 'avg_precision': 0.12138329148808327, 'f1': 0.0, 'accuracy': 0.9085365853658537, 'mean_importance': {'code_len_log': 0.6823507556903251, 'ast_nodes_log': 0.2876596388336838, 'num_functions': 0.029989605475991183}}
+feature_subset_graph_structure: {'model_name': 'xgboost_fallback_random_forest_cv', 'auc': 0.4107142857142857, 'avg_precision': 0.05076191028825594, 'f1': 0.06060606060606061, 'accuracy': 0.6219512195121951, 'mean_importance': {'cyclomatic_approx': 0.0398695801751224, 'coupling_imports': 0.4579750389885342, 'coupling_calls': 0.5021553808363435}}
+feature_subset_all: {'model_name': 'xgboost_fallback_random_forest_cv', 'auc': 0.524025974025974, 'avg_precision': 0.11028857965292894, 'f1': 0.0, 'accuracy': 0.926829268292683, 'mean_importance': {'statement_len_log': 0.31160772327498987, 'code_len_log': 0.36182669213605395, 'ast_nodes_log': 0.18622945034475852, 'num_functions': 0.011503152630353577, 'cyclomatic_approx': 0.0005443363181478014, 'coupling_imports': 0.02592085016972297, 'coupling_calls': 0.025240890953432148, 'compositionality_steps': 0.05349005279216721, 'independence_lexical': 0.023636851380373844}}
+resolved_model_name: xgboost_fallback_random_forest
+
+method: mlp
+classification_full: {'model_name': 'mlp_cv', 'auc': 0.4909090909090909, 'avg_precision': 0.06522521100108804, 'f1': 0.0, 'accuracy': 0.926829268292683, 'mean_importance': {'statement_len_log': 0.20387332184825196, 'code_len_log': 0.2074025159702664, 'ast_nodes_log': 0.2647026927723615, 'num_functions': 0.1498185140094579, 'cyclomatic_approx': 0.19565167745085682, 'coupling_imports': 0.19315036629136018, 'coupling_calls': 0.17588618307412812, 'compositionality_steps': 0.20535011500248615, 'independence_lexical': 0.17576416467322387}}
+routing_policy: {'always_baseline_success': 0.8597560975609756, 'always_decomposition_success': 0.8902439024390244, 'classifier_routed_success': 0.8841463414634146, 'classifier_decomposition_rate': 0.024390243902439025, 'estimated_cost_always_baseline': 1.0, 'estimated_cost_always_decomposition': 2.0, 'estimated_cost_classifier_routed': 1.024390243902439}
+confounds_full: {'model_name': 'mlp_cv', 'auc': 0.4909090909090909, 'avg_precision': 0.06522521100108804, 'f1': 0.0, 'accuracy': 0.926829268292683, 'mean_importance': {'statement_len_log': 0.20387332184825196, 'code_len_log': 0.2074025159702664, 'ast_nodes_log': 0.2647026927723615, 'num_functions': 0.1498185140094579, 'cyclomatic_approx': 0.19565167745085682, 'coupling_imports': 0.19315036629136018, 'coupling_calls': 0.17588618307412812, 'compositionality_steps': 0.20535011500248615, 'independence_lexical': 0.17576416467322387}}
+confounds_structural_only: {'model_name': 'mlp_cv', 'auc': 0.35162337662337667, 'avg_precision': 0.04780947954585216, 'f1': 0.0, 'accuracy': 0.9390243902439024, 'mean_importance': {'coupling_imports': 0.16267954160946113, 'coupling_calls': 0.1586094972399461, 'compositionality_steps': 0.16771717752583462, 'independence_lexical': 0.1619884779510525}}
+difficulty_bin: {'bin_name': 'low', 'n_tasks': 55, 'n_positive': 2, 'report': {'model_name': 'mlp_cv', 'auc': 0.4056603773584906, 'avg_precision': 0.04423076923076923, 'f1': 0.0, 'accuracy': 0.9454545454545454, 'mean_importance': {'statement_len_log': 0.1587911963912078, 'code_len_log': 0.18601150817344472, 'ast_nodes_log': 0.26501536631468486, 'num_functions': 0.16051995496182017, 'cyclomatic_approx': 0.006491490872509442, 'coupling_imports': 0.15012952315225103, 'coupling_calls': 0.006458680334537296, 'compositionality_steps': 0.15816079386854964, 'independence_lexical': 0.1748877697656121}}}
+difficulty_bin: {'bin_name': 'medium', 'n_tasks': 54, 'n_positive': 5, 'report': {'model_name': 'mlp_cv', 'auc': 0.7224489795918367, 'avg_precision': 0.23055278055278056, 'f1': 0.0, 'accuracy': 0.8888888888888888, 'mean_importance': {'statement_len_log': 0.2570813178910401, 'code_len_log': 0.27186289186744517, 'ast_nodes_log': 0.2222425292807258, 'num_functions': 0.15967210517761624, 'cyclomatic_approx': 0.003104498488452187, 'coupling_imports': 0.1491218699289268, 'coupling_calls': 0.16305216822760135, 'compositionality_steps': 0.157450447554549, 'independence_lexical': 0.16384497297436637}}}
+difficulty_bin: {'bin_name': 'high', 'n_tasks': 55, 'n_positive': 3, 'report': {'model_name': 'mlp_cv', 'auc': 0.6217948717948717, 'avg_precision': 0.09227726178190575, 'f1': 0.0, 'accuracy': 0.9090909090909091, 'mean_importance': {'statement_len_log': 0.15576044553776675, 'code_len_log': 0.16878617060419718, 'ast_nodes_log': 0.17264703037169843, 'num_functions': 0.1551289824259861, 'cyclomatic_approx': 0.1875094774744765, 'coupling_imports': 0.15929786648918304, 'coupling_calls': 0.17835087032657926, 'compositionality_steps': 0.20452204993860462, 'independence_lexical': 0.18910175017300446}}}
+feature_subset_task_description: {'model_name': 'mlp_cv', 'auc': 0.363961038961039, 'avg_precision': 0.04994317162873621, 'f1': 0.0, 'accuracy': 0.9390243902439024, 'mean_importance': {'statement_len_log': 0.14824684629808615, 'compositionality_steps': 0.1701519700465582, 'independence_lexical': 0.1615647899053081}}
+feature_subset_code_size: {'model_name': 'mlp_cv', 'auc': 0.673051948051948, 'avg_precision': 0.15526234079213755, 'f1': 0.0, 'accuracy': 0.926829268292683, 'mean_importance': {'code_len_log': 0.22877341360970824, 'ast_nodes_log': 0.2791017500197173, 'num_functions': 0.1679759232921866}}
+feature_subset_graph_structure: {'model_name': 'mlp_cv', 'auc': 0.36363636363636365, 'avg_precision': 0.047565726689414584, 'f1': 0.0, 'accuracy': 0.9390243902439024, 'mean_importance': {'cyclomatic_approx': 0.15060658419612766, 'coupling_imports': 0.16505472938871757, 'coupling_calls': 0.15181045831338336}}
+feature_subset_all: {'model_name': 'mlp_cv', 'auc': 0.4909090909090909, 'avg_precision': 0.06522521100108804, 'f1': 0.0, 'accuracy': 0.926829268292683, 'mean_importance': {'statement_len_log': 0.20387332184825196, 'code_len_log': 0.2074025159702664, 'ast_nodes_log': 0.2647026927723615, 'num_functions': 0.1498185140094579, 'cyclomatic_approx': 0.19565167745085682, 'coupling_imports': 0.19315036629136018, 'coupling_calls': 0.17588618307412812, 'compositionality_steps': 0.20535011500248615, 'independence_lexical': 0.17576416467322387}}
+resolved_model_name: mlp

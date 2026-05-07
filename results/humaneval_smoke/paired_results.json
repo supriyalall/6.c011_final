@@ -1,0 +1,52 @@
+[
+  {
+    "task_id": "HumanEval/0",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/1",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/2",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/3",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/4",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/5",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/6",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/7",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/8",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  },
+  {
+    "task_id": "HumanEval/9",
+    "monolithic_pass": true,
+    "decomposed_pass": true
+  }
+]

@@ -12,10 +12,16 @@ Example::
     ds = load_dataset("princeton-nlp/SWE-bench_Lite", split="test")
 """
 
+from decomposition_study.prompts import append_plan_then_code_block
 from decomposition_study.types import CodingTask
 
 
-def load_swe_bench_lite(split: str = "test", max_rows: int | None = None) -> list[CodingTask]:
+def load_swe_bench_lite(
+    split: str = "test",
+    max_rows: int | None = None,
+    *,
+    plan_then_code: bool = False,
+) -> list[CodingTask]:
     try:
         from datasets import load_dataset  # type: ignore[import-untyped]
     except ImportError as e:
@@ -29,6 +35,8 @@ def load_swe_bench_lite(split: str = "test", max_rows: int | None = None) -> lis
         row_d = dict(row)
         tid = str(row_d.get("instance_id", f"swebench_{i}"))
         problem = str(row_d.get("problem_statement", ""))
+        if plan_then_code:
+            problem = append_plan_then_code_block(problem)
         repo = str(row_d.get("repo", ""))
         tasks.append(
             CodingTask(
@@ -36,7 +44,7 @@ def load_swe_bench_lite(split: str = "test", max_rows: int | None = None) -> lis
                 dataset="swe_bench_lite",
                 statement=problem[:50000],
                 code_context=str(row_d.get("patch", ""))[:2000],
-                metadata={"repo": repo},
+                metadata={"repo": repo, "plan_then_code": plan_then_code},
             )
         )
     return tasks

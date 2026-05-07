@@ -1,0 +1,42 @@
+[
+  {
+    "task_id": "BigCodeBench/13",
+    "pass": false,
+    "result": "failed: nect to FTP server invalid_server: Failed to connect to FTP server | Failed to connect to FTP server ftp.dlptest.com: Failed to login | Failed to connect to FTP server ftp.dlptest.com: Failed to login | Failed to change to directory /invalid_directory on server ftp.dlptest.com: Failed to change directory | ",
+    "response": "```python\n    try:\n        ftp = ftplib.FTP(ftp_server)\n        ftp.login(ftp_user, ftp_password)\n    except Exception as e:\n        print(f\"Failed to connect to FTP server {ftp_server}: {str(e)}\")\n        return []\n\n    try:\n        ftp.cwd(ftp_dir)\n    except Exception as e:\n        print(f\"Failed to change to directory {ftp_dir} on server {ftp_server}: {str(e)}\")\n        return []\n\n    filenames = ftp.nlst()\n    downloaded_files = []\n\n    for filename in filenames:\n        local_filename = os.path.join(os.getcwd(), filename)\n        with open(local_filename, 'wb') as local_file:\n            try:\n                ftp.retrbinary(f'RETR {filename}', local_file.write)\n                downloaded_files.append(filename)\n            except Exception as e:\n                print(f\"Failed to download {filename}: {str(e)}\")\n\n    ftp.quit()\n    return downloaded_files\n```",
+    "completion": "\n    try:\n        ftp = ftplib.FTP(ftp_server)\n        ftp.login(ftp_user, ftp_password)\n    except Exception as e:\n        print(f\"Failed to connect to FTP server {ftp_server}: {str(e)}\")\n        return []\n\n    try:\n        ftp.cwd(ftp_dir)\n    except Exception as e:\n        print(f\"Failed to change to directory {ftp_dir} on server {ftp_server}: {str(e)}\")\n        return []\n\n    filenames = ftp.nlst()\n    downloaded_files = []\n\n    for filename in filenames:\n        local_filename = os.path.join(os.getcwd(), filename)\n        with open(local_filename, 'wb') as local_file:\n            try:\n                ftp.retrbinary(f'RETR {filename}', local_file.write)\n                downloaded_files.append(filename)\n            except Exception as e:\n                print(f\"Failed to download {filename}: {str(e)}\")\n\n    ftp.quit()\n    return downloaded_files\n",
+    "latency_s": 8.597208261489868
+  },
+  {
+    "task_id": "BigCodeBench/15",
+    "pass": false,
+    "result": "failed: ",
+    "response": "```python\n    if not os.path.exists(commands_file_path):\n        raise FileNotFoundError(f\"The file {commands_file_path} does not exist.\")\n\n    if not os.path.exists(output_dir_path):\n        os.makedirs(output_dir_path)\n\n    output_files = []\n    \n    with open(commands_file_path, mode='r', newline='') as csvfile:\n        reader = csv.reader(csvfile)\n        for index, row in enumerate(reader):\n            command = row[0]\n            output_file_path = os.path.join(output_dir_path, f'command_{index + 1}_output.txt')\n            output_files.append(output_file_path)\n            \n            try:\n                result = subprocess.run(command, shell=True, check=True, text=True, capture_output=True)\n                with open(output_file_path, 'w') as output_file:\n                    output_file.write(result.stdout)\n            except subprocess.CalledProcessError as e:\n                with open(output_file_path, 'w') as output_file:\n                    output_file.write(f\"Error: {e.stderr}\\nExit code: {e.returncode}\")\n\n    return output_files\n```",
+    "completion": "\n    if not os.path.exists(commands_file_path):\n        raise FileNotFoundError(f\"The file {commands_file_path} does not exist.\")\n\n    if not os.path.exists(output_dir_path):\n        os.makedirs(output_dir_path)\n\n    output_files = []\n    \n    with open(commands_file_path, mode='r', newline='') as csvfile:\n        reader = csv.reader(csvfile)\n        for index, row in enumerate(reader):\n            command = row[0]\n            output_file_path = os.path.join(output_dir_path, f'command_{index + 1}_output.txt')\n            output_files.append(output_file_path)\n            \n            try:\n                result = subprocess.run(command, shell=True, check=True, text=True, capture_output=True)\n                with open(output_file_path, 'w') as output_file:\n                    output_file.write(result.stdout)\n            except subprocess.CalledProcessError as e:\n                with open(output_file_path, 'w') as output_file:\n                    output_file.write(f\"Error: {e.stderr}\\nExit code: {e.returncode}\")\n\n    return output_files\n",
+    "latency_s": 10.380182027816772
+  },
+  {
+    "task_id": "BigCodeBench/17",
+    "pass": false,
+    "result": "failed: ",
+    "response": "```python\n    process_running = False\n    for proc in psutil.process_iter(['name']):\n        if proc.info['name'] == process_name:\n            process_running = True\n            proc.terminate()\n            proc.wait()  # Wait for the process to terminate\n            break\n\n    if not process_running:\n        subprocess.Popen(process_name)\n        return f\"Process not found. Starting {process_name}.\"\n    else:\n        subprocess.Popen(process_name)\n        return f\"Process found. Restarting {process_name}.\"\n```",
+    "completion": "\n    process_running = False\n    for proc in psutil.process_iter(['name']):\n        if proc.info['name'] == process_name:\n            process_running = True\n            proc.terminate()\n            proc.wait()  # Wait for the process to terminate\n            break\n\n    if not process_running:\n        subprocess.Popen(process_name)\n        return f\"Process not found. Starting {process_name}.\"\n    else:\n        subprocess.Popen(process_name)\n        return f\"Process found. Restarting {process_name}.\"\n",
+    "latency_s": 8.59373688697815
+  },
+  {
+    "task_id": "BigCodeBench/19",
+    "pass": true,
+    "result": "passed",
+    "response": "```python\n    if not os.path.exists(directory):\n        raise FileNotFoundError(f\"The specified directory does not exist: {directory}\")\n\n    file_paths = glob.glob(os.path.join(directory, '*'))\n    if not file_paths:\n        return None\n\n    zip_file_path = os.path.join(directory, 'files.zip')\n    with zipfile.ZipFile(zip_file_path, 'w') as zip_file:\n        for file_path in file_paths:\n            if os.path.isfile(file_path):\n                zip_file.write(file_path, os.path.basename(file_path))\n\n    return zip_file_path\n```",
+    "completion": "\n    if not os.path.exists(directory):\n        raise FileNotFoundError(f\"The specified directory does not exist: {directory}\")\n\n    file_paths = glob.glob(os.path.join(directory, '*'))\n    if not file_paths:\n        return None\n\n    zip_file_path = os.path.join(directory, 'files.zip')\n    with zipfile.ZipFile(zip_file_path, 'w') as zip_file:\n        for file_path in file_paths:\n            if os.path.isfile(file_path):\n                zip_file.write(file_path, os.path.basename(file_path))\n\n    return zip_file_path\n",
+    "latency_s": 5.323775053024292
+  },
+  {
+    "task_id": "BigCodeBench/34",
+    "pass": false,
+    "result": "failed: ",
+    "response": "```python\n    # Remove URLs from the text\n    text_without_urls = re.sub(r'http[s]?://\\S+|www\\.\\S+', '', text)\n    \n    # Generate the word cloud\n    wordcloud = WordCloud().generate(text_without_urls)\n    \n    # Check if there are any words to display\n    if not wordcloud.words_:\n        raise ValueError(\"No words available to generate a word cloud after removing URLs.\")\n    \n    # Plot the word cloud\n    plt.figure(figsize=(10, 5))\n    plt.imshow(wordcloud, interpolation='bilinear')\n    plt.axis('off')  # Hide the axes\n    plt.show()\n    \n    return wordcloud\n```",
+    "completion": "\n    # Remove URLs from the text\n    text_without_urls = re.sub(r'http[s]?://\\S+|www\\.\\S+', '', text)\n    \n    # Generate the word cloud\n    wordcloud = WordCloud().generate(text_without_urls)\n    \n    # Check if there are any words to display\n    if not wordcloud.words_:\n        raise ValueError(\"No words available to generate a word cloud after removing URLs.\")\n    \n    # Plot the word cloud\n    plt.figure(figsize=(10, 5))\n    plt.imshow(wordcloud, interpolation='bilinear')\n    plt.axis('off')  # Hide the axes\n    plt.show()\n    \n    return wordcloud\n",
+    "latency_s": 22.106930017471313
+  }
+]
